@@ -33,17 +33,25 @@ We also include the fundamental Python requirements for setting up your virtual 
 4. Additional brew packages (optional)
    - graphviz - https://formulae.brew.sh/formula/graphviz
       > brew install graphviz
-      
+5. Create you virtual environment
+    > 
+    > pyenv virtual environment {Python version} {FakeProject}
+    >
+    - Example:
+    > 
+    > pyenv virtual environment 3.10.0 FakeProject
+
+
 > **TIP**
 > 
 > Add an alias for your Mac virtual environment and project folder, as so:
 > 
 > > alias abc="pyenv deactivate; source /Users/{username}/.pyenv/versions/3.10.0/envs/FakeProject/bin/activate; cd ~/Projects/FakeProject/dev/"
 
-5. Once the above is installed and setup, run:
+6. Once the above is installed and setup, run:
     > pip install --upgrade pip
    
-6. Determine if you want a more simple Django setup or to use Cookiecutter. If you just want the simple setup, then install the main requirements file. Otherwise, proceed down to the Cookiecutter section.
+7. Determine if you want a more simple Django setup or to use Cookiecutter. If you just want the simple setup, then install the main requirements file. Otherwise, proceed down to the Cookiecutter section.
     > pip install -r requirements_simple.txt
    
 
@@ -53,14 +61,15 @@ https://www.tutorialspoint.com/how-to-install-python-in-windows
 
 1. Install **Python** - https://www.python.org/downloads/windows/
 2. Install **pyenv** https://github.com/pyenv/pyenv#windows
+3. Create you Python virtual environment 
 
 > **TIP**
 > Add an alias for your Mac virtual environment to your environment path, as so:
 
-3. Once the above is installed and setup, run:
+4Once the above is installed and setup, run:
     > pip install --upgrade pip
 
-4. Determine if you want a more simple Django setup or to use Cookiecutter. If you just want the simple setup, then install the main requirements file. Otherwise, proceed down to the Cookiecutter section.
+5. Determine if you want a more simple Django setup or to use Cookiecutter. If you just want the simple setup, then install the main requirements file. Otherwise, proceed down to the Cookiecutter section.
     > pip install -r requirements_simple.txt
 
 
