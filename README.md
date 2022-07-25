@@ -101,6 +101,11 @@ assets, databases, development and documentation
 Cookiecutter Django is a framework for jumpstarting production-ready Django projects quickly.
 
 - Documentation: https://cookiecutter-django.readthedocs.io/en/latest/
+- Github:
+- For Postgres
+  - https://github.com/cookiecutter/cookiecutter-django
+- For MySQL
+  - https://github.com/mabdullahadeel/cookiecutter-django-mysql
 
 ## Usage
 
@@ -113,5 +118,141 @@ First, get Cookiecutter. Trust me, it's awesome:
 Now run it against this repo:
 
 > $ cookiecutter https://github.com/cookiecutter/cookiecutter-django
+> 
+> $ cookiecutter https://github.com/mabdullahadeel/cookiecutter-django-mysql
 
+
+
+Walk through the prompts as required:
+
+### Project Generation Options
+
+- https://cookiecutter-django.readthedocs.io/en/latest/project-generation-options.html
+- https://cookiecutter-django.readthedocs.io/en/latest/settings.html
+
+This page describes all the template options that will be prompted by the cookiecutter CLI prior to generating your project.
+
+**project_name**:
+- Your project’s human-readable name, capitals and spaces allowed.
+
+**project_slug**:
+   - Your project’s slug without dashes or spaces. Used to name your repo and in other places where a Python-importable version of your project name is needed.
+
+**description:**
+ - Describes your project and gets used in places like README.rst and such.
+
+**author_name:**
+ - This is you! The value goes into places like LICENSE and such.
+
+**email:**
+- The email address you want to identify yourself in the project.
+
+**domain_name:**
+ - The domain name you plan to use for your project once it goes live. Note that it can be safely changed later on whenever you need to.
+
+**version:**
+- The version of the project at its inception.
+
+**open_source_license:**
+A software license for the project. The choices are:
+1. MIT
+2. BSD
+3. GPLv3
+4. Apache Software License 2.0
+5. Not open source
+
+**timezone:**
+ - The value to be used for the TIME_ZONE setting of the project.
+
+**windows:**
+ - Indicates whether the project should be configured for development on Windows.
+
+**use_pycharm:**
+ - Indicates whether the project should be configured for development with PyCharm.
+
+**use_docker:**
+ - Indicates whether the project should be configured to use Docker and Docker Compose.
+
+**postgresql_version:**
+ - Select a PostgreSQL version to use. The choices are:
+1. 14 
+2. 13 
+3. 12 
+4. 11 
+5. 10
+
+**cloud_provider:**
+ - Select a cloud provider for static & media files. The choices are:
+1. AWS 
+2. GCP 
+3. None
+
+> Note that if you choose no cloud provider, media files won’t work.
+
+**mail_service:**
+ - Select an email service that Django-Anymail provides
+1. Mailgun 
+2. Amazon SES 
+3. Mailjet 
+4. Mandrill 
+5. Postmark 
+6. SendGrid 
+7. SendinBlue 
+8. SparkPost 
+9. Other SMTP
+
+**use_async:**
+ - Indicates whether the project should use web sockets with Uvicorn + Gunicorn.
+
+**use_drf:**
+ - Indicates whether the project should be configured to use Django Rest Framework.
+
+**frontend_pipeline:**
+ - Select a pipeline to compile and optimise frontend assets (JS, CSS, …):
+1. None 
+2. Django Compressor 
+3. Gulp: support Bootstrap recompilation with real-time variables alteration.
+
+**use_celery:**
+ - Indicates whether the project should be configured to use Celery.
+
+**use_mailhog:**
+ - Indicates whether the project should be configured to use MailHog.
+
+**use_sentry:**
+ - Indicates whether the project should be configured to use Sentry.
+
+**use_whitenoise:**
+ - Indicates whether the project should be configured to use WhiteNoise.
+
+**use_heroku:**
+ - Indicates whether the project should be configured so as to be deployable to Heroku.
+
+**ci_tool:**
+ - Select a CI tool for running tests. The choices are:
+1. None 
+2. Travis CI 
+3. Gitlab CI 
+4. Github Actions
+
+**keep_local_envs_in_vcs:**
+ - Indicates whether the project’s .envs/.local/ should be kept in VCS (comes in handy when working in teams where local environment reproducibility is strongly encouraged). Note: .env(s) are only utilized when Docker Compose and/or Heroku support is enabled.
+
+**debug:**
+ - Indicates whether the project should be configured for debugging. This option is relevant for Cookiecutter Django developers only.
+
+## Cookiecutter Next Steps
+Once you have your initial installation, you'll need to install the appropriate python libraries found under the "requirements" folder.
+
+> cd requirements/
+> 
+> pip install -f base.txt
+
+> ** FOR LOCAL **
+> 
+> pip install -f local.txt
+
+> ** FOR PRODUCTION ** 
+> 
+> pip install -f production.txt
 
