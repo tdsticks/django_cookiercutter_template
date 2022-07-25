@@ -42,11 +42,10 @@ We also include the fundamental Python requirements for setting up your virtual 
 
 5. Once the above is installed and setup, run:
     > pip install --upgrade pip
-
-    > pip install -r requirements.txt
-
-
-
+   
+6. Determine if you want a more simple Django setup or to use Cookiecutter. If you just want the simple setup, then install the main requirements file. Otherwise, proceed down to the Cookiecutter section.
+    > pip install -r requirements_simple.txt
+   
 
 ## Windows
 
@@ -61,7 +60,9 @@ https://www.tutorialspoint.com/how-to-install-python-in-windows
 3. Once the above is installed and setup, run:
     > pip install --upgrade pip
 
-    > pip install -r requirements.txt
+4. Determine if you want a more simple Django setup or to use Cookiecutter. If you just want the simple setup, then install the main requirements file. Otherwise, proceed down to the Cookiecutter section.
+    > pip install -r requirements_simple.txt
+
 
 # Project Setup
 
@@ -90,10 +91,14 @@ assets, databases, development and documentation
       > ~/Projects/{FakeProject}/dev/{DjangoProjectName}/
       - Windows
       > C:\Projects\{FakeProject}\dev\{DjangoProjectName}\
-2. run: django-admin startproject {projectname} 
-3. https://docs.djangoproject.com/en/4.0/intro/tutorial01/
-4. Add an app
-5. run: python manage.py startapp {appname}
+2. Setup the Django project - https://docs.djangoproject.com/en/4.0/intro/tutorial01/
+    > run: django-admin startproject {projectname}
+3. Add an app (one or more)
+    > run: python manage.py startapp {appname}
+4. Create the .env file
+   1. Copy the .env.example file
+   2. Rename to .env
+   3. Update the environment variables
 
 
 # Cookiecutter Django
@@ -246,13 +251,13 @@ Once you have your initial installation, you'll need to install the appropriate 
 
 > cd requirements/
 > 
-> pip install -f base.txt
+> pip install -r base.txt
 
 > ** FOR LOCAL **
 > 
-> pip install -f local.txt
+> pip install -r local.txt
 
 > ** FOR PRODUCTION ** 
 > 
-> pip install -f production.txt
+> pip install -r production.txt
 
