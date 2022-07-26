@@ -1,0 +1,30 @@
+# Install Cookiecutter (if using this setup)
+cookiecutter==2.1.1
+
+# Django
+django==3.2.14
+
+# Django Extensions
+django-extensions==3.2.0
+
+# Django Filter
+django-filter==22.1
+
+# Django Reversion
+django-reversion==5.0.1
+
+# Rest Framework
+djangorestframework==3.13.1
+
+# Markdown
+Markdown==3.4.1
+
+# For MySQL database
+mysqlclient==2.1.0
+
+# Install dotenv if not using django-environ
+python-dotenv==0.20.0
+
+pytz==2022.1
+sqlparse==0.4.2
+Werkzeug==2.1.2

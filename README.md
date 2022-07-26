@@ -11,6 +11,7 @@ We also include the fundamental Python requirements for setting up your virtual 
 - Pip 22.2
 - pyenv 2.2.5
 - Python Main libraries
+  - Cookiecutter
   - Django
   - django-extensions (Handy Tools)
   - django-reversion (Revisioning)
@@ -51,8 +52,8 @@ We also include the fundamental Python requirements for setting up your virtual 
 6. Once the above is installed and setup, run:
     > pip install --upgrade pip
    
-7. Determine if you want a more simple Django setup or to use Cookiecutter. If you just want the simple setup, then install the main requirements file. Otherwise, proceed down to the Cookiecutter section.
-    > pip install -r requirements_simple.txt
+7. Install this requirements file first, then optionally you can install the Cookiecutter setup for further libraries / configuration.
+    > pip install -r requirements.txt
    
 
 ## Windows
@@ -66,13 +67,12 @@ https://www.tutorialspoint.com/how-to-install-python-in-windows
 > **TIP**
 > Add an alias for your Mac virtual environment to your environment path, as so:
 
-4Once the above is installed and setup, run:
+4. Once the above is installed and setup, run:
     > pip install --upgrade pip
 
-5. Determine if you want a more simple Django setup or to use Cookiecutter. If you just want the simple setup, then install the main requirements file. Otherwise, proceed down to the Cookiecutter section.
+5. Install this requirements file first, then optionally you can install the Cookiecutter setup for further libraries / configuration.
     > pip install -r requirements_simple.txt
-
-
+   
 # Project Setup
 
 1. I personally like to setup my projects with standard folders (short and sweet).
