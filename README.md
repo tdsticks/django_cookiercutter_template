@@ -305,9 +305,8 @@ Once you have your initial installation, you'll need to install the appropriate 
 
 > ***
 > 
-> **To reset all pip packages / libraries!**
-> 
-> ***
+> **To remove and reset all pip packages and libraries!**
+>
 >> pip freeze | xargs pip uninstall -y
 
 
@@ -319,9 +318,51 @@ in your environment variables into your Django project.
 
 ### Cookiecutter:
 
-Update the default setting to "True" in the config/settings/base.py file:
+Change the default setting to "True" in the config/settings/base.py file:
 
-> READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
+```
+READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
+
+*** Change be this ***
+READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
+```
+
+Change the DJANGO_DEBUG setting to DEBUG in the config/settings/base.py file:
+```
+DEBUG = env.bool("DJANGO_DEBUG", False)
+
+*** Change be this ***
+DEBUG = env.bool("DEBUG", default=False)
+```
+
+Then add the following to the database settings further down in the config/settings/base.py file:
+
+```
+# DATABASES
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#databases
+DATABASES = {
+    # "default": env.db("DATABASE_URL", default="mysql://root:debug@/awesomeproject"),
+    "default": {
+        'ENGINE': env.str("MYSQL_ENGINE"),
+        'NAME': env.str("MYSQL_DATABASE"),
+        'USER': env.str("MYSQL_USER"),
+        'PASSWORD': env.str("MYSQL_PASSWORD"),
+        'HOST': env.str("MYSQL_HOST"),
+        'PORT': env.int("MYSQL_PORT"),
+        'OPTIONS': {
+            # 'read_default_file': '/usr/local/etc/my.cnf',
+            # If this path changes, update the Dockerfile
+            # 'read_default_file': 'awesomeproject/my.cnf',
+            'sql_mode': 'STRICT_TRANS_TABLES',
+        }
+    }
+}
+# print("DATABASES:", DATABASES)
+```
+
+
+
 
 
 ### Django Standard Install:

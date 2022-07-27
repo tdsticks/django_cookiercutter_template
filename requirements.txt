@@ -22,9 +22,13 @@ Markdown==3.4.1
 # For MySQL database
 mysqlclient==2.1.0
 
-# Install dotenv if not using django-environ
+# Install dotenv (if not using django-environ)
 python-dotenv==0.20.0
 
 pytz==2022.1
 sqlparse==0.4.2
+
+# Sentry
+sentry-sdk==1.8.0  # https://github.com/getsentry/sentry-python
+
 Werkzeug==2.1.2
