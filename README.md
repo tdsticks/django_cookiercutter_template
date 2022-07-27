@@ -43,9 +43,9 @@ We also include the fundamental Python requirements for setting up your virtual 
     > pyenv virtual environment 3.10.0 FakeProject
 
 
-> **TIP**
+> **TIP:**
 > 
-> Add an alias for your Mac virtual environment and project folder, as so:
+> *** Add an alias for your Mac virtual environment and project folder, as so: ***
 > 
 > > alias abc="pyenv deactivate; source /Users/{username}/.pyenv/versions/3.10.0/envs/FakeProject/bin/activate; cd ~/Projects/FakeProject/dev/"
 
@@ -76,11 +76,20 @@ https://www.tutorialspoint.com/how-to-install-python-in-windows
 > **TIP**
 > Add an alias for your Mac virtual environment to your environment path, as so:
 
-4. Once the above is installed and setup, run:
+3. Clone the repository where you want the Django project to go:
+    > git clone https://github.com/Detroitsoftware/dsc_django_template.git
+
+4. Rename the cloned repo to the project name
+    > rename dsc_django_template {FakeProject}
+
+5. Change directory into the new Djanog project directory
+    > cd {Fake Project}
+
+6. Once the above is installed and setup, run:
     > pip install --upgrade pip
 
-5. Install this requirements file first, then optionally you can install the Cookiecutter setup for further libraries / configuration.
-    > pip install -r requirements_simple.txt
+7. Install this requirements file first, then optionally you can install the Cookiecutter setup for further libraries / configuration.
+    > pip install -r requirements.txt
    
 # Project Setup
 
