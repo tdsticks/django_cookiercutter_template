@@ -311,4 +311,51 @@ Once you have your initial installation, you'll need to install the appropriate 
 >> pip freeze | xargs pip uninstall -y
 
 
-#### Setup your environment variables
+# Environment Variables and Database Setup
+
+Regardless of the above path you take, the standard Django install or 
+the Cookiecutter setup, you'll need to be sure to populate and read 
+in your environment variables into your Django project.
+
+### Cookiecutter:
+
+Update the default setting to "True" in the config/settings/base.py file:
+
+> READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
+
+
+### Django Standard Install:
+
+Add the following code to your settings file:
+
+```
+import os
+import dotenv
+
+# Instantiate the env vars
+de = dotenv
+de.load_dotenv()
+```
+
+```
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# https://docs.djangoproject.com/en/4.0/ref/databases/#mysql-notes
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get("DATABASE"),
+        'USER': os.environ.get("USER"),
+        'PASSWORD': os.environ.get("PASSWORD"),
+        'HOST': os.environ.get("HOST"),
+        'PORT': os.environ.get("PORT"),
+        'OPTIONS': {
+            # 'read_default_file': '/usr/local/etc/my.cnf',
+            # If this path changes, update the Dockerfile
+            'read_default_file': 'smartscan_cms/my.cnf',
+            'sql_mode': 'STRICT_TRANS_TABLES',
+        }
+    }
+}
+# print("DATABASES:", DATABASES)
+```
