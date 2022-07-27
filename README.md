@@ -51,8 +51,17 @@ We also include the fundamental Python requirements for setting up your virtual 
 
 6. Once the above is installed and setup, run:
     > pip install --upgrade pip
-   
-7. Install this requirements file first, then optionally you can install the Cookiecutter setup for further libraries / configuration.
+
+7. Clone the repository where you want the Django project to go:
+    > git clone https://github.com/Detroitsoftware/dsc_django_template.git
+
+8. Rename the cloned repo to the project name
+    > mv dsc_django_template {FakeProject}
+
+9. Change directory into the new Djanog project directory
+    > cd {Fake Project}
+
+10. Install this requirements file first, then optionally you can install the Cookiecutter setup for further libraries / configuration.
     > pip install -r requirements.txt
    
 
@@ -75,7 +84,8 @@ https://www.tutorialspoint.com/how-to-install-python-in-windows
    
 # Project Setup
 
-1. I personally like to setup my projects with standard folders (short and sweet).
+1. I personally like to setup my projects with standard folders (short and sweet). This folder structure allows for various types of projects that include: assets, databases, development and documentation
+
    1. MacOS
     > mkdir ~/Projects/{FakeProject}
 
@@ -84,8 +94,6 @@ https://www.tutorialspoint.com/how-to-install-python-in-windows
     > md C:\Projects\{FakeProject}
 
     > mkdir assets; mkdir data; mkdir dev; mkdir doc;
-2. This folder structure allows for various types of projects that include: 
-assets, databases, development and documentation
 
 
 # Django Setup
