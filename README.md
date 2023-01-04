@@ -352,6 +352,15 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 DEBUG = env.bool("DEBUG", default=False)
 ```
 
+Add the Copilot environment and application vars if you are using AWS Copilot
+
+```
+COPILOT_ENVIRONMENT_NAME = env.str("COPILOT_ENVIRONMENT_NAME")
+COPILOT_APPLICATION_NAME = env("COPILOT_APPLICATION_NAME")
+# print(" COPILOT_ENVIRONMENT_NAME", COPILOT_ENVIRONMENT_NAME)
+# print(" COPILOT_APPLICATION_NAME", COPILOT_APPLICATION_NAME)
+```
+
 Then add the following to the database settings further down in the config/settings/base.py file:
 
 ```
@@ -372,14 +381,50 @@ DATABASES = {
             # If this path changes, update the Dockerfile
             # 'read_default_file': 'awesomeproject/my.cnf',
             'sql_mode': 'STRICT_TRANS_TABLES',
+            'init_command': 'SET foreign_key_checks = 0;',
         }
     }
 }
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
+# https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # print("DATABASES:", DATABASES)
 ```
 
+Setup Email if you want to have email work locally and in the cloud. You'll need to setup
+a Gmail account with an app password created.
 
-
+```
+# EMAIL
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
+EMAIL_BACKEND = env(
+    "EMAIL_BACKEND",
+    default="django.core.mail.backends.smtp.EmailBackend",
+)
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
+EMAIL_TIMEOUT =  env(
+    "EMAIL_TIMEOUT",
+    default=5,
+)
+# NEED TO INCLUDE THESE FOR DJANGO AUTH EMAIL TO WORK
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_USE_TLS = env("EMAIL_USE_TLS")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+SERVER_EMAIL = env("SERVER_EMAIL")
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
+# print("EMAIL_BACKEND:", EMAIL_BACKEND)
+# print("EMAIL_TIMEOUT:", EMAIL_TIMEOUT)
+# print("EMAIL_HOST:", EMAIL_HOST)
+# print("EMAIL_PORT:", EMAIL_PORT)
+# print("EMAIL_USE_TLS:", EMAIL_USE_TLS)
+# print("EMAIL_HOST_USER:", EMAIL_HOST_USER)
+# print("EMAIL_HOST_PASSWORD:", EMAIL_HOST_PASSWORD)
+# print("SERVER_EMAIL:", SERVER_EMAIL)
+# print("DEFAULT_FROM_EMAIL:", DEFAULT_FROM_EMAIL)
+```
 
 
 ### Django Standard Install:
