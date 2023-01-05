@@ -125,7 +125,8 @@ https://www.tutorialspoint.com/how-to-install-python-in-windows
 4. Create the .env file
    1. Copy the .env.example file to the root of your Django project (not the git repo)
    2. Rename to .env
-   3. Edit and update the environment variables
+   3. Again, be sure the .env file is in the root or the Django project folder (you should also have the manage.py file there)
+   4. Edit and update the environment variables
 
 
 # Cookiecutter Django
@@ -338,7 +339,7 @@ in your environment variables into your Django project.
 
 THIS IS IMPORTANT!!!
 
-Add the DJANGO_SETTINGS_MODULE env var to the top of the manage.py file, before the **if __name__ == "__main__":**
+- Add the DJANGO_SETTINGS_MODULE env var to the top of the manage.py file, before the **if __name__ == "__main__":**
 
 ```
 import environ
@@ -355,7 +356,7 @@ DJANGO_SETTINGS_MODULE = env("DJANGO_SETTINGS_MODULE")
 
 
 
-Change the default setting to "True" in the config/settings/base.py file:
+- Change the default setting to "True" in the config/settings/base.py file:
 
 ```
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
@@ -364,7 +365,7 @@ READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
 ```
 
-Change the DJANGO_DEBUG setting to DEBUG in the config/settings/base.py file:
+- Change the DJANGO_DEBUG setting to DEBUG in the config/settings/base.py file:
 ```
 DEBUG = env.bool("DJANGO_DEBUG", False)
 
@@ -372,7 +373,7 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 DEBUG = env.bool("DEBUG", default=False)
 ```
 
-Add the Copilot environment and application vars in the config/settings/base.py file, if you are using AWS Copilot
+- Add the Copilot environment and application vars in the config/settings/base.py file, if you are using AWS Copilot
 
 ```
 COPILOT_ENVIRONMENT_NAME = env.str("COPILOT_ENVIRONMENT_NAME")
@@ -381,7 +382,7 @@ COPILOT_APPLICATION_NAME = env("COPILOT_APPLICATION_NAME")
 # print(" COPILOT_APPLICATION_NAME", COPILOT_APPLICATION_NAME)
 ```
 
-Then add the following to the database settings further down in the config/settings/base.py file:
+- Then add the following to the database settings further down in the config/settings/base.py file:
 
 ```
 # DATABASES
@@ -411,7 +412,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # print("DATABASES:", DATABASES)
 ```
 
-Setup Email if you want to have email work locally and in the cloud. You'll need to setup
+- Setup Email if you want to have email work locally and in the cloud. You'll need to setup
 a Gmail account with an app password created.
 
 ```
@@ -466,19 +467,24 @@ de.load_dotenv()
 # https://docs.djangoproject.com/en/4.0/ref/databases/#mysql-notes
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get("DATABASE"),
-        'USER': os.environ.get("USER"),
-        'PASSWORD': os.environ.get("PASSWORD"),
-        'HOST': os.environ.get("HOST"),
-        'PORT': os.environ.get("PORT"),
+        'DATABASE_URL': 'mysql://{}:{}@{}:{}/{}'.
+        format(env("MYSQL_USER"), env("MYSQL_PASSWORD"), env("MYSQL_HOST"), env("MYSQL_PORT"), env("MYSQL_DATABASE")),
+        'ENGINE': env.str("MYSQL_ENGINE"),
+        'NAME': env.str("MYSQL_DATABASE"),
+        'USER': env.str("MYSQL_USER"),
+        'PASSWORD': env.str("MYSQL_PASSWORD"),
+        'HOST': env.str("MYSQL_HOST"),
+        'PORT': env.str("MYSQL_PORT"),
+        'CONN_MAX_AGE': 500,
         'OPTIONS': {
             # 'read_default_file': '/usr/local/etc/my.cnf',
             # If this path changes, update the Dockerfile
-            'read_default_file': 'smartscan_cms/my.cnf',
+            # 'read_default_file': 'awesomeproject/my.cnf',
             'sql_mode': 'STRICT_TRANS_TABLES',
+            "init_command": "SET foreign_key_checks = 0;",
         }
     }
 }
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
 # print("DATABASES:", DATABASES)
 ```
