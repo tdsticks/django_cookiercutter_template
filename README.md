@@ -14,9 +14,10 @@ We also include the fundamental Python requirements for setting up your virtual 
   - Cookiecutter
   - Django
   - django-extensions (Handy Tools)
+  - django-import-export (Import / Export CSV)
   - django-reversion (Revisioning)
   - django-filter
-  - djangorestframework
+  - djangorestframework (REST API)
   - Markdown
   - mysqlclient (MySQL)
   - python-dotenv (.env reader)
@@ -335,6 +336,25 @@ in your environment variables into your Django project.
 
 ### Cookiecutter:
 
+THIS IS IMPORTANT!!!
+
+Add the DJANGO_SETTINGS_MODULE env var to the top of the manage.py file, before the **if __name__ == "__main__":**
+
+```
+import environ
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, True)
+)
+# reading .env file
+environ.Env.read_env()
+
+DJANGO_SETTINGS_MODULE = env("DJANGO_SETTINGS_MODULE")
+# print(" DJANGO_SETTINGS_MODULE:", DJANGO_SETTINGS_MODULE)
+```
+
+
+
 Change the default setting to "True" in the config/settings/base.py file:
 
 ```
@@ -352,7 +372,7 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 DEBUG = env.bool("DEBUG", default=False)
 ```
 
-Add the Copilot environment and application vars if you are using AWS Copilot
+Add the Copilot environment and application vars in the config/settings/base.py file, if you are using AWS Copilot
 
 ```
 COPILOT_ENVIRONMENT_NAME = env.str("COPILOT_ENVIRONMENT_NAME")
