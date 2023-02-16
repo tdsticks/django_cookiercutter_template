@@ -1,5 +1,5 @@
-# dsc_django_template
-Detroit Software Co. Django template for new Python projects
+# django_cookiecutter_template
+Django template for new Python projects
 
 # Summary
 This project is a general Django template to help get us up and running quickly per POC and project. 
