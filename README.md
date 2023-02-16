@@ -57,7 +57,7 @@ We also include the fundamental Python requirements for setting up your virtual 
     > git clone https://github.com/tdsticks/django_cookiercutter_template.git
 
 8. Rename the cloned repo to the project name
-    > mv dsc_cookiecutter_template {FakeProject}
+    > mv django_cookiecutter_template {FakeProject}
 
 9. Change directory into the new Djanog project directory
     > cd {Fake Project}
@@ -78,10 +78,10 @@ https://www.tutorialspoint.com/how-to-install-python-in-windows
 > Add an alias for your Mac virtual environment to your environment path, as so:
 
 3. Clone the repository where you want the Django project to go:
-    > git clone [https://github.com/Detroitsoftware/dsc_django_template.git](https://github.com/tdsticks/django_cookiercutter_template.git)
+    > git clone [https://github.com/tdsticks/django_cookiercutter_template.git](https://github.com/tdsticks/django_cookiercutter_template.git)
 
 4. Rename the cloned repo to the project name
-    > rename dsc_cookiecutter_template {FakeProject}
+    > rename django_cookiecutter_template {FakeProject}
 
 5. Change directory into the new Djanog project directory
     > cd {Fake Project}
